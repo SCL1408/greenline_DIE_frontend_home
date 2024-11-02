@@ -24,7 +24,7 @@ export class UsuarioComponent {
   usuarioService = inject(UsuarioService);
 
   cliente: Usuario = new Usuario();
-  usuario: Login = new Login('', '');
+  usuario: Login = new Login(0 ,'', '', '');
 
   loginService = inject(LoginService);
   router = inject(Router);

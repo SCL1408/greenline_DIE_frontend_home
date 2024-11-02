@@ -1,11 +1,13 @@
 export class Login {
   idUsuario!: number;
   emailUsuario: string;
-  senhaUsuario: string;
+  usernameUsuario: string;
   role!: string;
 
-  constructor(emailUsuario: string, senhaUsuario: string) {
+  constructor(idUsuario: number, emailUsuario: string, usernameUsuario: string, role: string) {
+    this.idUsuario = idUsuario;
     this.emailUsuario = emailUsuario;
-    this.senhaUsuario = senhaUsuario;
+    this.usernameUsuario = usernameUsuario;
+    this.role = role;
   }
 }
