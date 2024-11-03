@@ -122,7 +122,7 @@ extractPayload(){
      let username = token.preferred_username;
      let email = token.email;
      let role = token.realm_access?.roles [0];
-      console.log(id);
+      //console.log(id);
     //  console.log(username);
     //  console.log(email);
     //  console.log(role);

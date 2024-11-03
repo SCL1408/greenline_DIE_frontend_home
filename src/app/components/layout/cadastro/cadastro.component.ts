@@ -5,6 +5,7 @@ import { Cadastro } from '../../../models/cadastro';
 import { CadastroService } from '../../../services/cadastro.service';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { LoginService } from '../../../auth/login.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -19,6 +20,7 @@ export class CadastroComponent {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private cadastroService = inject(CadastroService);
+  loginservice = inject(LoginService);
 
   constructor() {
     const idUsuario = this.route.snapshot.params['idUsuario'];
@@ -39,38 +41,42 @@ export class CadastroComponent {
   }
 
   save() {
-    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-    if (!emailPattern.test(this.cadastro.emailUsuario)) {
-      Swal.fire({
-        title: 'Email inválido',
-        text: 'Por favor, insira um email válido.',
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      });
-      return;
-    }
+    // const usuarioLogado = this.loginservice.extractPayload();
+    // if(usuarioLogado && this.findById(usuarioLogado.idUsuario)){
+      
+    // }
+  //   const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+  //   if (!emailPattern.test(this.cadastro.emailUsuario)) {
+  //     Swal.fire({
+  //       title: 'Email inválido',
+  //       text: 'Por favor, insira um email válido.',
+  //       icon: 'error',
+  //       confirmButtonText: 'Ok'
+  //     });
+  //     return;
+  //   }
     
-    if (this.cadastro.senhaUsuario === this.cadastro.confirmacaoSenha){
-      this.cadastro.role = 'USER';
-    this.cadastroService.save(this.cadastro).subscribe({
-      next: mensagem => {
-        Swal.fire({
-          title: 'Usuário cadastrado',
-          icon: 'success',
-          confirmButtonText: 'Ok',
-        });
-        this.router.navigate(['/login']);
-      },
-      error: erro => {
-        alert("Erro aconteceu no save");
-      }
-    });
-  }else {
-    Swal.fire({
-      title: 'As senhas não coincidem',
-      icon: 'error',
-      confirmButtonText: 'Ok',
-    });
-  }
+  //   if (this.cadastro.senhaUsuario === this.cadastro.confirmacaoSenha){
+  //     this.cadastro.role = 'USER';
+  //   this.cadastroService.save(this.cadastro).subscribe({
+  //     next: mensagem => {
+  //       Swal.fire({
+  //         title: 'Usuário cadastrado',
+  //         icon: 'success',
+  //         confirmButtonText: 'Ok',
+  //       });
+  //       this.router.navigate(['/login']);
+  //     },
+  //     error: erro => {
+  //       alert("Erro aconteceu no save");
+  //     }
+  //   });
+  // }else {
+  //   Swal.fire({
+  //     title: 'As senhas não coincidem',
+  //     icon: 'error',
+  //     confirmButtonText: 'Ok',
+  //   });
+  // }
 }
 }
