@@ -121,7 +121,7 @@ extractPayload(){
      let id = token.ID;
      let username = token.preferred_username;
      let email = token.email;
-     let role = token.realm_access?.roles [0];
+     let role = token.resource_access.greenline?.roles [0];
       //console.log(id);
     //  console.log(username);
     //  console.log(email);
