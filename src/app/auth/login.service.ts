@@ -28,17 +28,18 @@ export class LoginService {
   //   return this.http.post<string>(this.API+"/login", loginData, {responseType: 'text' as 'json'}); // Envie o objeto Login completo no corpo da solicitação
   // }
   login(loginData: { username: string, password: string }): Observable<any> {
-    const tokenEndpoint = `http://localhost:8080/realms/greenline/protocol/openid-connect/token`;
+    const tokenEndpoint = `http://192.168.56.1:8080/realms/greenline/protocol/openid-connect/token`;
   
     const body = new HttpParams()
       .set('client_id', 'greenline')
       .set('grant_type', 'password')
       .set('username', loginData.username)
       .set('password', loginData.password);
-  
+    
     return this.http.post<any>(tokenEndpoint, body, {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
+
   }
 
   findByLoginId(idLoginLogado: number): Observable<Login>{
