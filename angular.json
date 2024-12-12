@@ -35,7 +35,8 @@
             ],
             "scripts": [
               "node_modules/chart.js/dist/chart.js"
-            ]
+            ],
+            "baseHref": "/home/"
           },
           "configurations": {
             "production": {
